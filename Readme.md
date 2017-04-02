@@ -28,7 +28,7 @@ After setting `Posts.xml` directory, all python related questions and answers ca
 
 #### 4. Create index
 
-Index is created with the two filtered xml file `python.xml` and `pythonanswer.xml`. Run `main` method of  `PostIndexMain` class, then index will be created in `.\index\postindex` directory. It may takes 10 minutes to run create the whole index.
+Index is created with the two filtered xml file `python.xml` and `pythonanswer.xml`. run PostIndexMain.java in the default package of scr/main/java, then index will be created in `.\index\postindex` directory. It may takes 10 minutes to run create the whole index.
 
 #### 5.Search
 
