@@ -4,11 +4,11 @@
 
 The third party can be found in the local directory` .\lib`, if you are running the system with eclipse, you may need to set the build path for the project like below.
 
-![image](https://github.com/Chr1st0p/SearchStackOverflow/tree/master/image/01.png)
+![image](https://github.com/Chr1st0p/SearchStackOverflow/raw/master/image/01.png)
 
 And add all these library to Build Path.
 
-![image](https://github.com/Chr1st0p/SearchStackOverflow/tree/master/image/02.png)
+![image](https://github.com/Chr1st0p/SearchStackOverflow/raw/master/image/02.png)
 
 Also you can download it your own with the links or use [maven](https://maven.apache.org/) with the `.\pom.xml` to add the library. All the libraries and its link(in [Maven repository](http://www.mvnrepository.com/)) are listed below.
 
@@ -34,25 +34,25 @@ Index is created with the two filtered xml file `python.xml` and `pythonanswer.x
 
 After index is created, we can query on the field that has been indexed. Run `PostSearchMain` class to search. In the search process, the first step is to input the query, phrase query can be specified with double quotation marks. The picture below shows a example of a query.
 
-![queryexample](https://github.com/Chr1st0p/SearchStackOverflow/tree/master/image/03.png)
+![queryexample](https://github.com/Chr1st0p/SearchStackOverflow/raw/master/image/03.png)
 
 Then specify the fields you want to query. The figures below shows query all fields and customized fields example.
 
 Input "0" to query on all fields.
 
-![queryonall](https://github.com/Chr1st0p/SearchStackOverflow/tree/master/image/04.png)
+![queryonall](https://github.com/Chr1st0p/SearchStackOverflow/raw/master/image/04.png)
 
 Input "1" for customizing fields, and then input the corresponding number to choose fields.
 
-![queryonspecific](https://github.com/Chr1st0p/SearchStackOverflow/tree/master/image/05.png)
+![queryonspecific](https://github.com/Chr1st0p/SearchStackOverflow/raw/master/image/05.png)
 
 After query fields, user can determine top N results to be returned. Here is a example of a certain N.
 
-![topN](https://github.com/Chr1st0p/SearchStackOverflow/tree/master/image/06.png)
+![topN](https://github.com/Chr1st0p/SearchStackOverflow/raw/master/image/06.png)
 
 Then two example results will be returned like below.
 
-![queryallresult](https://github.com/Chr1st0p/SearchStackOverflow/tree/master/image/07.png)
+![queryallresult](https://github.com/Chr1st0p/SearchStackOverflow/raw/master/image/07.png)
 
-![phrasequeryspecificfields](https://github.com/Chr1st0p/SearchStackOverflow/tree/master/image/08.png)
+![phrasequeryspecificfields](https://github.com/Chr1st0p/SearchStackOverflow/raw/master/image/08.png)
 
