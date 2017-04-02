@@ -25,8 +25,9 @@ public class PostSearchMain {
                 break;
             }
             case 1: {
+            	sc.nextLine();
                 System.out.println("Specify the fields you need to query, 1 means Body(Text), 2 means Title(question), 3 means Code, 4 means Tags(question).");
-                String fields = sc.next();
+                String fields = sc.nextLine();
 
                 System.out.println("Input the result number Top N:");
                 hitNum = sc.nextInt();

@@ -10,7 +10,6 @@ import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.store.FSDirectory;
 import org.dom4j.DocumentException;
 import parser.XMLParser;
-import stackoverflow.Answer;
 import stackoverflow.Post;
 import stackoverflow.PostField;
 
@@ -32,7 +31,7 @@ public class Main {
         ReIndex1 indexer = new ReIndex1();
         indexer.ReIndexAnswer();
 
-        System.out.println("Start read question python");
+        System.out.println("Start read Python Question.");
 
         IndexReader reIndex1Reader;
         IndexSearcher reIndex1Searcher;
@@ -72,11 +71,12 @@ public class Main {
         FileWriter resultWriter = new FileWriter(result, true);
         PrintWriter resultPrintWriter = new PrintWriter(resultWriter);
         Map<String, Integer> sortedMap = sortByComparator(map, DESC);
+        System.out.println("Top 20 user");
         int i = 1;
         for (Map.Entry<String, Integer> entry : sortedMap.entrySet()) {
             System.out.println("Rank " + i + " UserId: " + entry.getKey() + " Accepted answer number: " + entry.getValue());
             resultPrintWriter.println("UserId:" + entry.getKey() + " Accepted Answer Count" + entry.getValue());
-            if (i >= 10) {
+            if (i >= 20) {
                 break;
             }
             i++;
