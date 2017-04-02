@@ -81,13 +81,21 @@ public class PostSearcher {
             wrapper.close();
             return;
         }
-        System.out.println(queryStr);
-        for(String s:list){
-        	System.out.println(s);
-        }
+//        System.out.println(queryStr);
+//        for(String s:list){
+//        	System.out.println(s);
+//        }
+        
         String[] queryFields = list.toArray(new String[list.size()]);
-        MultiFieldQueryParser parser = new MultiFieldQueryParser(queryFields, wrapper, boosts);
-        parser.setDefaultOperator(QueryParser.Operator.AND);
+        MultiFieldQueryParser parser;
+        if(list.size()==1){
+        	parser = new MultiFieldQueryParser(queryFields, wrapper);
+        	
+        }else{
+        	parser = new MultiFieldQueryParser(queryFields, wrapper, boosts);
+        	parser.setDefaultOperator(QueryParser.Operator.AND);
+        }
+        
         Query query = parser.parse(queryStr);
 
         TopDocs hitDocs = postSearcher.search(query, hitNum);
