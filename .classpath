@@ -7,11 +7,6 @@
 	<classpathentry kind="lib" path="lib/lucene-analyzers-common-6.4.1.jar"/>
 	<classpathentry kind="lib" path="lib/lucene-core-6.4.1.jar"/>
 	<classpathentry kind="lib" path="lib/lucene-queryparser-6.4.1.jar"/>
-	<classpathentry kind="lib" path="P:/EclipseSE/SearchStackoverflow/lib/dom4j-1.6.1.jar"/>
-	<classpathentry kind="lib" path="P:/EclipseSE/SearchStackoverflow/lib/jsoup-1.10.2.jar"/>
-	<classpathentry kind="lib" path="P:/EclipseSE/SearchStackoverflow/lib/lucene-analyzers-common-6.4.1.jar"/>
-	<classpathentry kind="lib" path="P:/EclipseSE/SearchStackoverflow/lib/lucene-core-6.4.1.jar"/>
-	<classpathentry kind="lib" path="P:/EclipseSE/SearchStackoverflow/lib/lucene-queryparser-6.4.1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: dom4j:dom4j:1.6.1"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: xml-apis:xml-apis:1.0.b2"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: org.apache.lucene:lucene-core:6.4.1"/>

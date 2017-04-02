@@ -129,7 +129,7 @@ public class PostIndexer {
             read.close();
         }
 
-        System.out.println("Total number of All Post documents indexed: " + writer.maxDoc());
+        System.out.println("Total number of Post documents indexed: " + writer.maxDoc());
         try {
             writer.close();
         } catch (IOException e) {

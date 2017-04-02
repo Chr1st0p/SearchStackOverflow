@@ -2,13 +2,7 @@
 
 #### 1.Third party libary
 
-The third party can be found in the local directory` .\lib`, if you are running the system with eclipse, you may need to set the build path for the project like below.
-
-![image](https://github.com/Chr1st0p/SearchStackOverflow/raw/master/image/01.png)
-
-And add all these library to Build Path.
-
-![image](https://github.com/Chr1st0p/SearchStackOverflow/raw/master/image/02.png)
+The third party library can be found in the local directory` .\lib`.
 
 Also you can download it your own with the links or use [maven](https://maven.apache.org/) with the `.\pom.xml` to add the library. All the libraries and its link(in [Maven repository](http://www.mvnrepository.com/)) are listed below.
 
@@ -24,7 +18,7 @@ The `.\postsXML` directory is where you put such huge xml file `Posts.xml`. To s
 
 #### 3.Filter python related questions and answers
 
-After setting `Posts.xml` directory, all python related questions and answers can be filtered by running the `main` method of `FilterPythonMain` class. When filtering is finished, `python.xml` and `pythonanswer.xml` will be created in `.\filteredXML` directory. It may take serval hours for the filtering process.
+After setting `Posts.xml` directory, all python related questions and answers can be filtered by running  `FilterPythonMain.java`  in the default package of `scr/main/java`. When filtering is finished, `python.xml` and `pythonanswer.xml` will be created in `.\filteredXML` directory. It may take serval hours for the filtering process.
 
 #### 4. Create index
 
@@ -50,7 +44,7 @@ After query fields, user can determine top N results to be returned. Here is a e
 
 ![topN](https://github.com/Chr1st0p/SearchStackOverflow/raw/master/image/06.png)
 
-Then two example results will be returned like below.
+Then two example results will be returned like below. Note: If you try to set a large returned query results number, please unselect the `Limit console output` in `Preference` -> `Run/Debug`->`Console` .
 
 ![queryallresult](https://github.com/Chr1st0p/SearchStackOverflow/raw/master/image/07.png)
 
