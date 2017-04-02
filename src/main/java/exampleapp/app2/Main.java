@@ -15,9 +15,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+        List<String> days = Arrays.asList("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
         ReIndex2 indexer = new ReIndex2();
         indexer.ReIndexAnswer();
 
@@ -36,6 +39,7 @@ public class Main {
             ScoreDoc[] docs;
             docs = reIndex2Searcher.search(query, 10000000).scoreDocs;
             result1PrintWriter.println("Hour" + i + " Answers Count:" + docs.length);
+            System.out.println("Hour" + i + " Answers Count:" + docs.length);
         }
 
         result1PrintWriter.flush();
@@ -51,7 +55,8 @@ public class Main {
             Query query = IntPoint.newExactQuery(PostField.CreateDay.toString(), i);
             ScoreDoc[] docs;
             docs = reIndex2Searcher.search(query, 100000000).scoreDocs;
-            result2PrintWriter.println("Day" + i + " Answers Count:" + docs.length);
+            result2PrintWriter.println("Day:" + days.get(i - 1) + " Answers Count:" + docs.length);
+            System.out.println("Day:" + days.get(i - 1) + " Answers Count:" + docs.length);
         }
 
         result2PrintWriter.flush();

@@ -64,6 +64,7 @@ public class Main {
                     }
                 }
             }
+            bufferedReader.close();
             read.close();
         }
 
@@ -71,9 +72,14 @@ public class Main {
         FileWriter resultWriter = new FileWriter(result, true);
         PrintWriter resultPrintWriter = new PrintWriter(resultWriter);
         Map<String, Integer> sortedMap = sortByComparator(map, DESC);
-
+        int i = 1;
         for (Map.Entry<String, Integer> entry : sortedMap.entrySet()) {
+            System.out.println("Rank " + i + " UserId: " + entry.getKey() + " Accepted answer number: " + entry.getValue());
             resultPrintWriter.println("UserId:" + entry.getKey() + " Accepted Answer Count" + entry.getValue());
+            if (i >= 10) {
+                break;
+            }
+            i++;
         }
 
         resultPrintWriter.flush();

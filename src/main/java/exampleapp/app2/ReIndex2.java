@@ -80,13 +80,13 @@ public class ReIndex2 {
         System.out.println("Index end.");
     }
 
-	static int getHour(String dateStr) throws ParseException {
+    private static int getHour(String dateStr) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
         Date date = sdf.parse(dateStr);
         return date.getHours();
     }
 
-    static int getDay(String dateStr) throws ParseException {
+    private static int getDay(String dateStr) throws ParseException {
         List<String> days = Arrays.asList("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
         Date date = sdf.parse(dateStr);
