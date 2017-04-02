@@ -48,27 +48,32 @@ public class PostSearcher {
         PerFieldAnalyzerWrapper wrapper = new PerFieldAnalyzerWrapper(new StandardAnalyzer(), customizeAnalyzer);
         //  Weight customization
         Map<String, Float> boosts = new HashMap<>();
-        boosts.put(PostField.Body.toString(), 1.0f);
-        boosts.put(PostField.Title.toString(), 3.0f);
-        boosts.put(PostField.Code.toString(), 2.0f);
-        boosts.put(PostField.Tags.toString(), 3.0f);
+        
         //  Add customized analyzer and weight to QueryParser
 
         List<String> list = new ArrayList<>();
         if (select.equals("0")) {
             list = Arrays.asList(PostField.Body.toString(), PostField.Title.toString(), PostField.Code.toString(), PostField.Tags.toString());
+            boosts.put(PostField.Body.toString(), 1.0f);
+            boosts.put(PostField.Title.toString(), 3.0f);
+            boosts.put(PostField.Code.toString(), 2.0f);
+            boosts.put(PostField.Tags.toString(), 3.0f);
         } else {
             if (fields.contains("1")) {
                 list.add(PostField.Body.toString());
+                boosts.put(PostField.Body.toString(), 1.0f);
             }
             if (fields.contains("2")) {
                 list.add(PostField.Title.toString());
+                boosts.put(PostField.Title.toString(), 3.0f);
             }
             if (fields.contains("3")) {
                 list.add(PostField.Code.toString());
+                boosts.put(PostField.Code.toString(), 2.0f);
             }
             if (fields.contains("4")) {
                 list.add(PostField.Tags.toString());
+                boosts.put(PostField.Tags.toString(), 3.0f);
             }
         }
         if (list.size() == 0) {
@@ -76,7 +81,10 @@ public class PostSearcher {
             wrapper.close();
             return;
         }
-
+        System.out.println(queryStr);
+        for(String s:list){
+        	System.out.println(s);
+        }
         String[] queryFields = list.toArray(new String[list.size()]);
         MultiFieldQueryParser parser = new MultiFieldQueryParser(queryFields, wrapper, boosts);
         parser.setDefaultOperator(QueryParser.Operator.AND);
