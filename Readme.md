@@ -26,7 +26,7 @@ Index is created with the two filtered xml file `python.xml` and `pythonanswer.x
 
 #### 5.Search
 
-After index is created, we can query on the field that has been indexed. Run `PostSearchMain` class to search. In the search process, the first step is to input the query, phrase query can be specified with double quotation marks. The picture below shows a example of a query.
+After index is created, we can query on the field that has been indexed. Run `PostSearchMain` class  in the default package of "src/main/java" to search. In the search process, the first step is to input the query, phrase query can be specified with double quotation marks. The picture below shows a example of a query.
 
 ![queryexample](https://github.com/Chr1st0p/SearchStackOverflow/raw/master/image/03.png)
 
@@ -50,3 +50,6 @@ Then two example results will be returned like below. Note: If you try to set a 
 
 ![phrasequeryspecificfields](https://github.com/Chr1st0p/SearchStackOverflow/raw/master/image/08.png)
 
+#### 6.Two IR Applications
+
+The IR applications can be found at `exampleapp.app1` and `exampleapp.app2` package,  They can be initialized by running the `Main.java` separately. After running, index and results will be created in `.\exampleappindex\01` and `.\exampleappindex\02` respectively.

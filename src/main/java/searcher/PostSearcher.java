@@ -25,16 +25,21 @@ import utils.PostComparator;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class PostSearcher {
 
     private IndexReader postReader;
     private IndexSearcher postSearcher;
+    
+    private List<Integer> questionIDList;
 
     public PostSearcher() throws IOException {
         postReader = DirectoryReader.open(FSDirectory.open(Paths.get(utils.Paths.POSTINDEXPATH)));
         postSearcher = new IndexSearcher(postReader);
+        questionIDList =  new LinkedList<Integer>();
 
     }
 
@@ -90,15 +95,26 @@ public class PostSearcher {
         MultiFieldQueryParser parser;
         if(list.size()==1){
         	parser = new MultiFieldQueryParser(queryFields, wrapper);
+//        	parser.setDefaultOperator(QueryParser.Operator.OR);
         	
         }else{
         	parser = new MultiFieldQueryParser(queryFields, wrapper, boosts);
-        	parser.setDefaultOperator(QueryParser.Operator.AND);
+//        	parser.setDefaultOperator(QueryParser.Operator.AND);
         }
+        String regEx="[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~£¡@#£¤%¡­¡­&*£¨£©¡ª¡ª+|{}¡¾¡¿¡®£»£º¡°¡±¡°¡¯¡££¬¡¢£¿]"; 
+        Pattern pa = Pattern.compile(regEx); 
+        Matcher m = pa.matcher(queryStr);
+        queryStr = m.replaceAll("").trim();
         
         Query query = parser.parse(queryStr);
+        int hits=0;
+        if(hitNum<100){
+        	hits = hitNum*5;
+        }else{
+        	hits = hitNum*2;
+        }
 
-        TopDocs hitDocs = postSearcher.search(query, hitNum);
+        TopDocs hitDocs = postSearcher.search(query, hits);
 
         for (ScoreDoc doc : hitDocs.scoreDocs) {
             Document document = postSearcher.doc(doc.doc);
@@ -107,11 +123,19 @@ public class PostSearcher {
 
                 int id = Integer.parseInt(document.get(PostField.IdCopy.toString()));
                 answers = findAllAnswer(id);
-                posts.add(new Post(document, answers, (double) doc.score));
+                Post p2 = new Post(document, answers, (double) doc.score);
+                if(!questionIDList.contains(p2.getId())){
+                	posts.add(p2);
+                	questionIDList.add(p2.getId());
+                }
             } else {
                 int parentId = Integer.parseInt(document.get(PostField.ParentIdCopy.toString()));
                 if (findPost(parentId, doc.score) != null) {
-                    posts.add(findPost(parentId, (double) doc.score));
+                	Post p1 = findPost(parentId, (double) doc.score);
+                	if(!questionIDList.contains(p1.getId())){
+                    	posts.add(p1);
+                    	questionIDList.add(p1.getId());
+                    }
                 }
             }
         }
@@ -121,6 +145,10 @@ public class PostSearcher {
         if (posts.size() != 0) {
             for (Post p : posts) {
                 i++;
+                
+                if(i>hitNum){
+                	break;
+                }
                 System.out.println("Question" + i + " ID:" + p.getId());
                 System.out.println("Question" + i + " search Score:" + p.searchScore);
                 System.out.println("Question" + i + " Title:" + p.getTitle().replace('\n', ' '));
