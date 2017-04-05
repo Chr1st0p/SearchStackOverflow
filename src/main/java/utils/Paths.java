@@ -4,13 +4,15 @@ package utils;
  * Created by str2n on 2017/2/25.
  */
 public class Paths {
-
-    public static final String POSTSPATH = "P:\\IDEA\\InformationRetrieval\\stackoverflow.com-Posts\\";
-
+	//Path for Posts.xml
+//    public static final String POSTSPATH = "The directory to store Posts.xml in your computer";
+    public static final String POSTSPATH = System.getProperty("user.dir") + "\\postsXML\\";
+    
+    //Path to store the filtered XML file
     public static final String FILTEREDFILEPATH = System.getProperty("user.dir") + "\\filteredXML\\";
-
+    //Path for question id index -> to  filter answer related to python
     public static final String QIDINDEXPATH = System.getProperty("user.dir") + "\\index\\qidindex\\";
-
+    //
     public static final String POSTINDEXPATH = System.getProperty("user.dir") + "\\index\\postindex\\";
 
     public static final String REINDEX1PATH = System.getProperty("user.dir") + "\\exampleappindex\\01\\";
